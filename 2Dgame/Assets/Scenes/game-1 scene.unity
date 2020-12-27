@@ -67083,7 +67083,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 497951023}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a3534a2911582c748bee48250b7f131a, type: 3}
@@ -73189,6 +73189,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!1 &1416929912
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1416929914}
+  - component: {fileID: 1416929913}
+  m_Layer: 0
+  m_Name: API practice
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1416929913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1416929912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feadf35ce8e4a19449ff2eb465ecfbf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1416929914
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1416929912}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.1629279, y: 0.34956446, z: -73.0512}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1435765670 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4178166294983028445, guid: 94ec7dd099d9e0743bc8d86cef56500b,
@@ -73730,6 +73773,7 @@ GameObject:
   - component: {fileID: 1957362345}
   - component: {fileID: 1957362344}
   - component: {fileID: 1957362343}
+  - component: {fileID: 1957362346}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -73820,6 +73864,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1957362346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957362342}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13cb271b06cd3574383f30e21cb6f365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveSpead: 10.5
+  JumpHeight: 100
+  InTheGround: 0
+  Bullet: {fileID: 0}
+  BulletPosition: {fileID: 0}
+  BulletSpead: 800
+  Sound: {fileID: 0}
+  Health: 100
 --- !u!1 &2071531567
 GameObject:
   m_ObjectHideFlags: 0
