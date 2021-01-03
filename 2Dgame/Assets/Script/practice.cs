@@ -31,13 +31,36 @@ public class practice : MonoBehaviour
     public int Health = 100;
     
 
-    private AudioClip Audio;
-    private Rigidbody2D Rigidbody2D;
-    private Animation Animation;
+    private AudioClip Adi;
+    private Rigidbody2D Rig;
+    private Animation Ani;
     #endregion
 
- 
-    public void test()
+
+    private void Start()
+    {
+        Rig = GetComponent<Rigidbody2D>();
+    }
+
+
+    public float x;
+    public void Update()
+    {
+        GetHorizontal();
+        move();
+    }
+
+    private void GetHorizontal()
+    {
+        x = Input.GetAxis("Horizontal");
+    }
+
+    private void move()
+    {
+        Rig.velocity = new Vector2(x * MoveSpead, Rig.velocity.y);
+    }
+
+    /*public void test()
     {
         Debug.Log("Hello World");//Debug.Log
         print("Hello World");//print
@@ -87,8 +110,9 @@ public class practice : MonoBehaviour
 
         test3();
         test3(75);
+        
     }
-   
+   */
     
 
 }

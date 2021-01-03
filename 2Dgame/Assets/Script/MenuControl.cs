@@ -3,21 +3,42 @@ using UnityEngine.SceneManagement;
 
 public class MenuControl : MonoBehaviour
 {
+    public AudioSource BGM;
+    public AudioClip Sound;
     
     public void StartGame()
+    {
+        BGM.PlayOneShot(Sound,2);
+        Invoke("DelayStartGame", 1.5f);
+    }
+
+    public void BackToMenu()
+    {
+        BGM.PlayOneShot(Sound, 2);
+        Invoke("DelayMenuGame", 1.5f);
+    }
+
+    public void QuitGame()
+    {
+        BGM.PlayOneShot(Sound, 2);
+        Invoke("DelayQuitGame", 1.5f);
+    }
+
+    #region [DelayGame]
+    private void DelayStartGame()
     {
         SceneManager.LoadScene(1);
     }
 
-
-    public void BackToMenu()
+    private void DelayMenuGame()
     {
         SceneManager.LoadScene(0);
     }
 
-
-    public void QuitGame()
+    private void DelayQuitGame()
     {
         Application.Quit();
     }
+    #endregion
+
 }
