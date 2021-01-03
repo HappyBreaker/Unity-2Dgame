@@ -28,7 +28,7 @@ public class API_Practice : MonoBehaviour
 
         Physics2D.gravity = new Vector2(0, -20);
 
-        Application.OpenURL("https://www.youtube.com/?gl=TW&tab=r1");
+        //Application.OpenURL("https://www.youtube.com/?gl=TW&tab=r1");
 
         print("9.9999去小數點為：" + Mathf.Floor(9.9999f));
 
