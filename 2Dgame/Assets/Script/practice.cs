@@ -89,8 +89,22 @@ public class practice : MonoBehaviour
         if(OnTheGround == true && Input.GetKeyDown(KeyCode.Space))
             {
             Rig.AddForce(new Vector2(0, JumpHeight));
-            OnTheGround = false;
+            Ani.SetTrigger("jumping");
             }
+
+        Collider2D hit = Physics2D.OverlapCircle(transform.position + postion, range, 1 << 8);
+        
+        if(hit)
+        {
+            OnTheGround = true;
+        }
+        else
+        {
+            OnTheGround = false;
+        }
+
+        Ani.SetFloat("jump", Rig.velocity.y);
+        Ani.SetBool("on the ground", OnTheGround);
     }
 
     /*public void test()
