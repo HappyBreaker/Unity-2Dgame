@@ -7,12 +7,12 @@ public class practice : MonoBehaviour
     [Range(0f,1000f)]
     public float MoveSpead = 10.5f;
     [Header("跳越高度")]
-    [Range(0f, 3000f)]
-    public float JumpHeight = 100;
+    [Range(0, 1000)]
+    public int JumpHeight = 100;
     [Header("是否在地上")]
     [Tooltip("是否在地上")]
-    public bool InTheGround = false;
-    [Header("子彈-物件")]
+    public bool OnTheGround = true;
+   /* [Header("子彈-物件")]
     [Tooltip("子彈-物件")]
     public GameObject Bullet;
     [Header("子彈生成點")]
@@ -24,22 +24,28 @@ public class practice : MonoBehaviour
     public int BulletSpead = 800;
     [Header("開槍音效")]
     [Tooltip("開槍音效")]
-    public AudioClip Sound;
+    */public AudioClip Sound;
     [Header("血量")]
     [Tooltip("血量")]
     [Range(0,200)]
     public int Health = 100;
-    
+    [Header("碰撞位置")]
+    public Vector3 postion ;
+    [Header("碰撞半徑")]
+    public float range;
+
+
 
     private AudioClip Adi;
     private Rigidbody2D Rig;
-    private Animation Ani;
+    private Animator Ani;
     #endregion
 
 
     private void Start()
     {
         Rig = GetComponent<Rigidbody2D>();
+        Ani = GetComponent<Animator>();
     }
 
 
@@ -48,6 +54,13 @@ public class practice : MonoBehaviour
     {
         GetHorizontal();
         move();
+        jump();
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = new Color(0, 1, 0, 0.4f);
+        Gizmos.DrawSphere(transform.position + postion, range);
     }
 
     private void GetHorizontal()
@@ -58,6 +71,26 @@ public class practice : MonoBehaviour
     private void move()
     {
         Rig.velocity = new Vector2(x * MoveSpead, Rig.velocity.y);
+
+        if(Input.GetKey(KeyCode.D) ||Input.GetKey(KeyCode.RightArrow))
+            {
+            transform.localEulerAngles = Vector3.zero;
+            }
+        if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+            {
+            transform.localEulerAngles = new Vector3(0, 180, 0);
+            }
+
+        Ani.SetBool("run", x != 0);
+    }
+
+    private void jump()
+    {
+        if(OnTheGround == true && Input.GetKeyDown(KeyCode.Space))
+            {
+            Rig.AddForce(new Vector2(0, JumpHeight));
+            OnTheGround = false;
+            }
     }
 
     /*public void test()

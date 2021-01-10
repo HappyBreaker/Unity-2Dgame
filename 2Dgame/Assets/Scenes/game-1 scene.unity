@@ -683,7 +683,7 @@ GameObject:
   - component: {fileID: 306395589}
   - component: {fileID: 306395588}
   - component: {fileID: 306395587}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground;wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74440,13 +74440,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpead: 10.5
-  JumpHeight: 100
-  InTheGround: 0
-  Bullet: {fileID: 0}
-  BulletPosition: {fileID: 0}
-  BulletSpead: 800
+  JumpHeight: 1000
+  OnTheGround: 1
   Sound: {fileID: 0}
   Health: 100
+  postion: {x: 0, y: -0.95, z: 0}
+  range: 0.5
   x: 0
 --- !u!70 &1957362347
 CapsuleCollider2D:
@@ -74461,8 +74460,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.03311634, y: -0.28179884}
-  m_Size: {x: 1.3739872, y: 1.8806801}
+  m_Offset: {x: -0.1, y: -0.28179884}
+  m_Size: {x: 1.26, y: 1.8806801}
   m_Direction: 0
 --- !u!50 &1957362348
 Rigidbody2D:
@@ -74479,7 +74478,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
