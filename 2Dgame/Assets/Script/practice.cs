@@ -12,7 +12,7 @@ public class practice : MonoBehaviour
     [Header("是否在地上")]
     [Tooltip("是否在地上")]
     public bool OnTheGround = true;
-   /* [Header("子彈-物件")]
+    [Header("子彈-物件")]
     [Tooltip("子彈-物件")]
     public GameObject Bullet;
     [Header("子彈生成點")]
@@ -24,7 +24,7 @@ public class practice : MonoBehaviour
     public int BulletSpead = 800;
     [Header("開槍音效")]
     [Tooltip("開槍音效")]
-    */public AudioClip Sound;
+    public AudioClip Sound;
     [Header("血量")]
     [Tooltip("血量")]
     [Range(0,200)]
@@ -36,7 +36,7 @@ public class practice : MonoBehaviour
 
 
 
-    private AudioClip Adi;
+    private AudioSource Aud;
     private Rigidbody2D Rig;
     private Animator Ani;
     #endregion
@@ -46,21 +46,33 @@ public class practice : MonoBehaviour
     {
         Rig = GetComponent<Rigidbody2D>();
         Ani = GetComponent<Animator>();
+        Aud = GetComponent<AudioSource>();
     }
 
 
     public float x;
+
     public void Update()
     {
         GetHorizontal();
         move();
         jump();
+        fire();
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = new Color(0, 1, 0, 0.4f);
         Gizmos.DrawSphere(transform.position + postion, range);
+    }
+    //處發事件：Enter
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        //當碰到Tag(Key)的物件時執行
+        if(other.tag =="Key")
+        {
+            Destroy(other.gameObject);
+        }
     }
 
     private void GetHorizontal()
@@ -105,6 +117,17 @@ public class practice : MonoBehaviour
 
         Ani.SetFloat("jump", Rig.velocity.y);
         Ani.SetBool("on the ground", OnTheGround);
+    }
+
+    private void fire()
+    {
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            Aud.PlayOneShot(Sound, Random.Range(1f, 1.5f));
+            GameObject temp = Instantiate(Bullet, BulletPosition.position, BulletPosition.rotation);
+
+            temp.GetComponent<Rigidbody2D>().AddForce(BulletPosition.right * BulletSpead + BulletPosition.up * 100);
+        }
     }
 
     /*public void test()
