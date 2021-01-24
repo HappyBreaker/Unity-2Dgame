@@ -67653,7 +67653,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 497951023}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 23.6, y: -56.6, z: -10}
+  m_LocalPosition: {x: 48.75, y: -56.6, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -75301,7 +75301,7 @@ GameObject:
   - component: {fileID: 1957362348}
   - component: {fileID: 1957362349}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Warrior
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75384,7 +75384,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1957362342}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.87, y: -58.85, z: 0}
+  m_LocalPosition: {x: 46.32, y: -54.63, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1374579824}
@@ -75852,7 +75852,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2119282705}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 54.32477, y: -58.980915, z: 0}
+  m_LocalPosition: {x: 54.48, y: -58.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -75870,9 +75870,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09257ed9a7f46ad499b61f8cedac9660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpead: 10.5
-  RangeAtk: 100
-  Damage: 20
+  MoveSpeed: 3.5
+  RangeAtk: 40
+  Attack: 20
   Health: 100
   Sound: {fileID: 0}
 --- !u!70 &2119282710
@@ -75903,15 +75903,15 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1000
+  m_Mass: 150
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 6
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!82 &2119282712
 AudioSource:
   m_ObjectHideFlags: 0
