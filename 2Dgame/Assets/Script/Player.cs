@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
+
 
 public class Player : MonoBehaviour
 {
@@ -20,8 +22,12 @@ public class Player : MonoBehaviour
     public Transform BulletPosition;
     [Header("子彈速度")]
     [Tooltip("子彈速度")]
-    [Range(0,5000)]
-    public int BulletSpead = 800;
+    [Range(0, 5000)]
+    public float BulletSpeed = 500;
+    [Header("子彈傷害")]
+    [Tooltip("子彈傷害")]
+    [Range(0, 5000)]
+    public float BulletDamage = 50;
     [Header("開槍音效")]
     [Tooltip("開槍音效")]
     public AudioClip Sound;
@@ -29,6 +35,10 @@ public class Player : MonoBehaviour
     [Tooltip("血量")]
     [Range(0,200)]
     public int Health = 100;
+    [Header("血量文字")]
+    public Text TextHp;
+    [Header("血量圖片")]
+    public Image ImgHp;
     [Header("碰撞位置")]
     public Vector3 postion ;
     [Header("碰撞半徑")]
@@ -131,8 +141,18 @@ public class Player : MonoBehaviour
             Aud.PlayOneShot(Sound, Random.Range(1f, 1.5f));
             GameObject temp = Instantiate(Bullet, BulletPosition.position, BulletPosition.rotation);
 
-            temp.GetComponent<Rigidbody2D>().AddForce(BulletPosition.right * BulletSpead + BulletPosition.up * 100);
+            temp.GetComponent<Rigidbody2D>().AddForce(BulletPosition.right * BulletSpeed + BulletPosition.up * 100);
+
+            temp.AddComponent<Bullet>().Damage = BulletDamage;
         }
+    }
+
+    private void Dead()
+    {
+        Health = 0;
+        TextHp.text = Health.ToString();
+        Ani.SetBool("Die",true);
+        enabled = false;
     }
 
     /*public void test()

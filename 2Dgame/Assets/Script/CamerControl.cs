@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class CamerControl : MonoBehaviour
 {
@@ -7,6 +8,16 @@ public class CamerControl : MonoBehaviour
     [Header("追蹤速度")]
     [Range(0f,100f)]
     public float speed;
+    [Header("晃動間隔")]
+    [Range(0f, 100f)]
+    public float shakeInterval=0.5f;
+    [Header("晃動值")]
+    [Range(0f, 100f)]
+    public float shakeValue = 0.5f;
+    [Header("晃動次數")]
+    [Range(0, 10)]
+    public int shakecounte = 3;
+
 
     private void Track()
     {
@@ -21,5 +32,15 @@ public class CamerControl : MonoBehaviour
     {
         Track();
     }
-
+ 
+    private IEnumerator ShakeCamera()
+    {
+        for (int i = 1; 1 <= shakecounte; i++)
+        {
+            transform.position += Vector3.up * shakeValue;
+            yield return new WaitForSeconds(shakeInterval);
+            transform.position -= Vector3.up * shakeValue;
+            yield return new WaitForSeconds(shakeInterval);
+        }
+    }
 }
