@@ -121,6 +121,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &85446996 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4178166294983028446, guid: 94ec7dd099d9e0743bc8d86cef56500b,
+    type: 3}
+  m_PrefabInstance: {fileID: 292572646}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &96445296
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,7 +591,7 @@ Transform:
   - {fileID: 1139439573}
   - {fileID: 1372621110}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &272306544
 MonoBehaviour:
@@ -799,6 +805,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 4178166294983028446, guid: 94ec7dd099d9e0743bc8d86cef56500b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94ec7dd099d9e0743bc8d86cef56500b, type: 3}
@@ -67657,7 +67668,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &497951027
 AudioSource:
@@ -67770,7 +67781,7 @@ MonoBehaviour:
   targer: {fileID: 1957362345}
   speed: 5
   shakeInterval: 0.5
-  shakeValue: 0.5
+  shakeValue: 5
   shakecounte: 3
 --- !u!1 &508848446
 GameObject:
@@ -67943,7 +67954,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 5000
+  m_Text: 2000
 --- !u!4 &558578645 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4178166294983028445, guid: 94ec7dd099d9e0743bc8d86cef56500b,
@@ -69441,7 +69452,7 @@ Transform:
   - {fileID: 306395584}
   - {fileID: 961574313}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1154814318
 GameObject:
@@ -69896,7 +69907,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: 200
 --- !u!222 &1351591436
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -70137,6 +70148,12 @@ Transform:
   m_Father: {fileID: 1957362345}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1379166646 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4178166294983028446, guid: 94ec7dd099d9e0743bc8d86cef56500b,
+    type: 3}
+  m_PrefabInstance: {fileID: 4178166295253812430}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1407298285
 GameObject:
   m_ObjectHideFlags: 0
@@ -75157,7 +75174,7 @@ GameObject:
   - component: {fileID: 1627487458}
   - component: {fileID: 1627487457}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: status deta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75630,7 +75647,7 @@ Transform:
   m_LocalScale: {x: 1.3365, y: 1.3365, z: 1.3365}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &1833514343
 CircleCollider2D:
@@ -75727,7 +75744,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 6200d8fba13d3d94f8eda235a5432a75, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -75746,13 +75763,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1957362342}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 46.32, y: -54.63, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1374579824}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1957362346
 MonoBehaviour:
@@ -75772,14 +75789,13 @@ MonoBehaviour:
   Bullet: {fileID: 8616342021688881192, guid: 64c48ff58284f5e4cb36ef5abd4b5e0c, type: 3}
   BulletPosition: {fileID: 1374579824}
   BulletSpeed: 500
-  BulletDamage: 800
+  BulletDamage: 1258
   Sound: {fileID: 8300000, guid: 04d12f408f8bbde4db1df440417f7daa, type: 3}
-  Health: 100
-  TextHp: {fileID: 0}
-  ImgHp: {fileID: 0}
   postion: {x: 0, y: -1, z: 0}
   range: 0.5
-  x: 0
+  Health: 140
+  TextHp: {fileID: 1351591435}
+  ImgHp: {fileID: 1195951012}
   KeySound: {fileID: 8300000, guid: bea01ab9ce2f4a842996b52ebb6eaa4f, type: 3}
 --- !u!70 &1957362347
 CapsuleCollider2D:
@@ -76218,7 +76234,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2119282705}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 54.48, y: -58.8, z: 0}
+  m_LocalPosition: {x: 54.58, y: -58.91, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -76237,15 +76253,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 3
-  RangeAtk: 3
-  CDAtk: 0
+  RangeAtk: 3.6
+  CDAtk: 3
   Attack: 20
-  Health: 100
+  AtkDelay: 0.63
+  Health: 1500
   TextHp: {fileID: 550195339}
   ImgHp: {fileID: 1646098109}
+  OnDead:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 85446996}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1379166646}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   Sound: {fileID: 0}
-  OffSetAtk: {x: 2.09, y: -0.11, z: 0}
-  SizeAtk: {x: 2, y: 4, z: 0.1}
+  ofSetAtk: {x: 2.3, y: -0.25, z: 0}
+  SizeAtk: {x: 2.35, y: 3.85, z: 1}
 --- !u!70 &2119282710
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -76275,7 +76317,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 150
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -76519,6 +76561,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Protal
+      objectReference: {fileID: 0}
+    - target: {fileID: 4178166294983028446, guid: 94ec7dd099d9e0743bc8d86cef56500b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4178166294983028447, guid: 94ec7dd099d9e0743bc8d86cef56500b,
         type: 3}

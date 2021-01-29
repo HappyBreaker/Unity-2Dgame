@@ -5,17 +5,13 @@ public class CamerControl : MonoBehaviour
 {
     [Header("追蹤物件")]
     public Transform targer;
-    [Header("追蹤速度")]
-    [Range(0f,100f)]
+    [Header("追蹤速度"),Range(0f,100f)]
     public float speed;
-    [Header("晃動間隔")]
-    [Range(0f, 100f)]
+    [Header("晃動間隔"),Range(0, 1)]
     public float shakeInterval=0.5f;
-    [Header("晃動值")]
-    [Range(0f, 100f)]
+    [Header("晃動值"),  Range(0, 5)]
     public float shakeValue = 0.5f;
-    [Header("晃動次數")]
-    [Range(0, 10)]
+    [Header("晃動次數"),Range(0, 10)]
     public int shakecounte = 3;
 
 
@@ -32,11 +28,14 @@ public class CamerControl : MonoBehaviour
     {
         Track();
     }
- 
-    private IEnumerator ShakeCamera()
+    /// <summary>
+    /// 搖晃效果
+    /// </summary>
+    public IEnumerator ShakeCamera()
     {
-        for (int i = 1; 1 <= shakecounte; i++)
+        for (int i = 0; i <= shakecounte; i++)
         {
+            //print(i);
             transform.position += Vector3.up * shakeValue;
             yield return new WaitForSeconds(shakeInterval);
             transform.position -= Vector3.up * shakeValue;

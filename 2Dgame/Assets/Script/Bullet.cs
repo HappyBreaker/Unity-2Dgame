@@ -9,6 +9,9 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.GetComponent<Boss>())
         {
             collision.gameObject.GetComponent<Boss>().health(Damage);
+
         }
+
+        Destroy(gameObject);
     }
 } 

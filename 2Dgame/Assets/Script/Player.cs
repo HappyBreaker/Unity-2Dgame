@@ -5,50 +5,39 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     #region [練習欄位]
-    [Header("移動數值")]
-    [Range(0f,1000f)]
+    [Header("移動數值"), Range(0f,1000f)]
     public float MoveSpead = 10.5f;
-    [Header("跳越高度")]
-    [Range(0, 1000)]
+    [Header("跳越高度"), Range(0, 1000)]
     public int JumpHeight = 100;
-    [Header("是否在地上")]
-    [Tooltip("是否在地上")]
+    [Header("是否在地上"), Tooltip("是否在地上")]
     public bool OnTheGround = true;
-    [Header("子彈-物件")]
-    [Tooltip("子彈-物件")]
+    [Header("子彈-物件"),  Tooltip("子彈-物件")]
     public GameObject Bullet;
-    [Header("子彈生成點")]
-    [Tooltip("子彈生成點")]
+    [Header("子彈生成點"), Tooltip("子彈生成點")]
     public Transform BulletPosition;
-    [Header("子彈速度")]
-    [Tooltip("子彈速度")]
-    [Range(0, 5000)]
+    [Header("子彈速度"), Tooltip("子彈速度"), Range(0, 5000)]
     public float BulletSpeed = 500;
-    [Header("子彈傷害")]
-    [Tooltip("子彈傷害")]
-    [Range(0, 5000)]
+    [Header("子彈傷害"), Tooltip("子彈傷害"), Range(0, 5000)]
     public float BulletDamage = 50;
-    [Header("開槍音效")]
-    [Tooltip("開槍音效")]
+    [Header("開槍音效"), Tooltip("開槍音效")]
     public AudioClip Sound;
-    [Header("血量")]
-    [Tooltip("血量")]
-    [Range(0,200)]
-    public int Health = 100;
+    [Header("地板碰撞位置")]
+    public Vector3 postion ;
+    [Header("地板碰撞半徑")]
+    public float range;
+
+    [Header("血量"), Tooltip("血量"), Range(0, 200)]
+    public float Health = 200;
     [Header("血量文字")]
     public Text TextHp;
     [Header("血量圖片")]
     public Image ImgHp;
-    [Header("碰撞位置")]
-    public Vector3 postion ;
-    [Header("碰撞半徑")]
-    public float range;
-
-
 
     private AudioSource Aud;
     private Rigidbody2D Rig;
     private Animator Ani;
+    private float HealthMax;
+    //private CamerControl Cam;
     #endregion
 
 
@@ -57,10 +46,17 @@ public class Player : MonoBehaviour
         Aud = GetComponent<AudioSource>();
         Rig = GetComponent<Rigidbody2D>();
         Ani = GetComponent<Animator>();
+
+        HealthMax = Health;
+
+        TextHp.text = Health.ToString();
+        ImgHp.fillAmount = Health / HealthMax;
+
+        //Cam = FindObjectOfType<CamerControl>();
     }
 
 
-    public float x;
+    private float x;
 
     public void Update()
     {
@@ -150,7 +146,7 @@ public class Player : MonoBehaviour
     private void Dead()
     {
         Health = 0;
-        TextHp.text = Health.ToString();
+        TextHp.text = 0.ToString();
         Ani.SetBool("Die",true);
         enabled = false;
     }
@@ -208,6 +204,13 @@ public class Player : MonoBehaviour
         
     }
    */
-    
+    public void health(float Damage)
+    {
+        Health -= Damage;
+        TextHp.text = Health.ToString();
+        ImgHp.fillAmount = Health / HealthMax;
+        
+        if (Health <= 0) Dead();
+    }
 
 }
