@@ -147,7 +147,7 @@ public class Player : MonoBehaviour
     {
         Health = 0;
         TextHp.text = 0.ToString();
-        Ani.SetBool("Die",true);
+        Ani.SetBool("die", true);
         enabled = false;
     }
 

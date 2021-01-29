@@ -67779,7 +67779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targer: {fileID: 1957362345}
-  speed: 5
+  speed: 2
   shakeInterval: 0.5
   shakeValue: 5
   shakecounte: 3
