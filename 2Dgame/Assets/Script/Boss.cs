@@ -44,12 +44,15 @@ public class Boss : MonoBehaviour
     private Player player;
     private float Timer; //計時器
     private CamerControl Cam;
+    private bool IsSecond;
+    private ParticleSystem ParSystem;
 
     private void Start()
     {
         Aud = GetComponent<AudioSource>();
         Rig = GetComponent<Rigidbody2D>();
         Ani = GetComponent<Animator>();
+        ParSystem = GameObject.Find("skeletonstagetwo").GetComponent<ParticleSystem>();
        
         HealthMax = Health;
 
