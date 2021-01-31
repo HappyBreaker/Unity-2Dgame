@@ -72,10 +72,17 @@ public class Boss : MonoBehaviour
     {
         Gizmos.color = new Color(1, 0, 0, 0.5f);
         Gizmos.DrawCube(transform.position + transform.right * ofSetAtk.x + transform.up * ofSetAtk.y, SizeAtk);
+
+        Gizmos.color = new Color(1, 1, 0, 0.5f);
+        Gizmos.DrawSphere(transform.position, RangeAtk);
     }
 
     private void move()
     {
+        AnimatorStateInfo info = Ani.GetCurrentAnimatorStateInfo(0);
+        if (info.IsName("Boss-Attack") || info.IsName("Boss-Hit")) return;
+
+
         /*
         if(transform.position.x > player.transform.position.x)
         {
@@ -146,6 +153,7 @@ public class Boss : MonoBehaviour
         Ani.SetTrigger("GetHit");
         TextHp.text = Health.ToString();
         ImgHp.fillAmount = Health / HealthMax;
+        if (Health <= HealthMax * 0.7) RangeAtk = 20;
 
         if (Health <= 0) Dead();
     }

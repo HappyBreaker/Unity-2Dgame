@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 
 public class Player : MonoBehaviour
@@ -36,6 +37,7 @@ public class Player : MonoBehaviour
     private AudioSource Aud;
     private Rigidbody2D Rig;
     private Animator Ani;
+    private SpriteRenderer Spr;
     private float HealthMax;
     //private CamerControl Cam;
     #endregion
@@ -46,6 +48,7 @@ public class Player : MonoBehaviour
         Aud = GetComponent<AudioSource>();
         Rig = GetComponent<Rigidbody2D>();
         Ani = GetComponent<Animator>();
+        Spr = GetComponent<SpriteRenderer>();
 
         HealthMax = Health;
 
@@ -149,68 +152,32 @@ public class Player : MonoBehaviour
         TextHp.text = 0.ToString();
         Ani.SetBool("die", true);
         enabled = false;
+        Rig.Sleep();
     }
 
-    /*public void test()
-    {
-        Debug.Log("Hello World");//Debug.Log
-        print("Hello World");//print
-    }
-
-    public int n1()
-    {
-        return 10;
-    }
-
-    public string Name()
-    {
-        return "HappyBreaker";
-    }
-    
-    public void test2(string MyName)
-    {
-        //MyName = Name();
-        print(MyName);
-    }
-
-    private void Drive(string Sound, int Speed, string direction = "sda")
-    {
-        print("開車方向：" + direction);
-        print("開車音效：" + Sound);
-        print("開車速度：" + Speed);
-
-    }
-
-    private void test3(int speed = 50)
-    {
-        print("開雨刷");
-        print("雨刷速度" + speed);
-    }
-    
-    private void Start()
-    {
-        print("n1的傳回值:" + n1());
-        
-        test2("HappyBaker");
-        test();
-        
-        Drive("前方",100, "噗噗噗");
-        Drive("後方", 75, "哈哈哈");
-        Drive("左方", 50, "滴滴滴");
-        Drive("右方", 25);
-
-        test3();
-        test3(75);
-        
-    }
-   */
     public void health(float Damage)
     {
         Health -= Damage;
         TextHp.text = Health.ToString();
         ImgHp.fillAmount = Health / HealthMax;
-        
+        StartCoroutine(damageeffect());
+
+
         if (Health <= 0) Dead();
+    }
+
+    public IEnumerator damageeffect()
+    {
+        Color red = new Color(1, 0.1f, 0.1f);
+        
+
+        for (int i = 0; i < 4; i++)
+        {
+            Spr.color = red;
+            yield return new WaitForSeconds(0.1f);
+            Spr.color = Color.white;
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 
 }
