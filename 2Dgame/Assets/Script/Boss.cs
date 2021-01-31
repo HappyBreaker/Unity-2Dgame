@@ -62,7 +62,7 @@ public class Boss : MonoBehaviour
         ImgHp.fillAmount = Health / HealthMax;
 
         Cam = FindObjectOfType<CamerControl>();
-        //Rig.AddForce(transform.right);
+        Rig.AddForce(transform.right);
     }
 
     void Update()
@@ -145,6 +145,12 @@ public class Boss : MonoBehaviour
         if (hit) player.health(Attack);
         
         StartCoroutine(Cam.ShakeCamera()); // 搖晃觸發
+
+        if (IsSecond)
+        {
+            ParSystem.Play();
+        }
+
     }
     /// <summary>
     /// 受傷
@@ -156,7 +162,12 @@ public class Boss : MonoBehaviour
         Ani.SetTrigger("GetHit");
         TextHp.text = Health.ToString();
         ImgHp.fillAmount = Health / HealthMax;
-        if (Health <= HealthMax * 0.7) RangeAtk = 20;
+
+        if (Health <= HealthMax * 0.7)
+        {
+            IsSecond = true;
+            RangeAtk = 30;
+        }
 
         if (Health <= 0) Dead();
     }

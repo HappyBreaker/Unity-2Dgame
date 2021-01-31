@@ -6,13 +6,13 @@ using System.Collections;
 public class Player : MonoBehaviour
 {
     #region [練習欄位]
-    [Header("移動數值"), Range(0f,1000f)]
+    [Header("移動數值"), Range(0f, 1000f)]
     public float MoveSpead = 10.5f;
     [Header("跳越高度"), Range(0, 1000)]
     public int JumpHeight = 100;
     [Header("是否在地上"), Tooltip("是否在地上")]
     public bool OnTheGround = true;
-    [Header("子彈-物件"),  Tooltip("子彈-物件")]
+    [Header("子彈-物件"), Tooltip("子彈-物件")]
     public GameObject Bullet;
     [Header("子彈生成點"), Tooltip("子彈生成點")]
     public Transform BulletPosition;
@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     [Header("開槍音效"), Tooltip("開槍音效")]
     public AudioClip Sound;
     [Header("地板碰撞位置")]
-    public Vector3 postion ;
+    public Vector3 postion;
     [Header("地板碰撞半徑")]
     public float range;
 
@@ -33,6 +33,8 @@ public class Player : MonoBehaviour
     public Text TextHp;
     [Header("血量圖片")]
     public Image ImgHp;
+    [Header("結束面板")]
+    public GameObject EndPanel;
 
     private AudioSource Aud;
     private Rigidbody2D Rig;
@@ -148,6 +150,7 @@ public class Player : MonoBehaviour
 
     private void Dead()
     {
+        EndPanel.SetActive(true);
         Health = 0;
         TextHp.text = 0.ToString();
         Ani.SetBool("die", true);

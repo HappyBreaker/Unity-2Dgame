@@ -21,7 +21,7 @@ public class CamerControl : MonoBehaviour
         Vector3 pos2 = transform.position;
         pos1.z = -10;
 
-        pos2 = Vector3.Lerp(pos2, pos1, 0.5f * speed);
+        pos2 = Vector3.Lerp(pos2, pos1, 0.5f * speed * Time.deltaTime );
         transform.position = pos2; 
     }
     private void LateUpdate()
