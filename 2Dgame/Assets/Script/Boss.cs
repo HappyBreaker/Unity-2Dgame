@@ -82,10 +82,10 @@ public class Boss : MonoBehaviour
 
     private void move()
     {
+        Rig.WakeUp();
         AnimatorStateInfo info = Ani.GetCurrentAnimatorStateInfo(0);
         if (info.IsName("Boss-Attack") || info.IsName("Boss-Hit")) return;
-
-
+        
         /*
         if(transform.position.x > player.transform.position.x)
         {
