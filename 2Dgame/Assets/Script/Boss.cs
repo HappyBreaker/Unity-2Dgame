@@ -103,17 +103,18 @@ public class Boss : MonoBehaviour
         {
             //Rig.AddForce(transform.right);
             Rig.MovePosition(transform.position + transform.right * Time.deltaTime * MoveSpeed);
+            Ani.SetTrigger("walk");
         }
         else
         {
             attack();
         }
 
-        Ani.SetBool("Walk", Rig.velocity.magnitude > 0);
+        //Ani.SetBool("Walk", Rig.velocity.magnitude > 0);
         
         
         
-        //print(Rig.velocity.magnitude); 檢查用
+        //print(Rig.velocity.magnitude); //檢查用
     }
     /// <summary>
     /// 攻擊冷卻與攻擊行為
