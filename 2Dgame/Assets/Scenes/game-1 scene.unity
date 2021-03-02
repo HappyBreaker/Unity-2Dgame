@@ -73269,6 +73269,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: test
       objectReference: {fileID: 0}
+    - target: {fileID: 4178166294983028446, guid: 94ec7dd099d9e0743bc8d86cef56500b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94ec7dd099d9e0743bc8d86cef56500b, type: 3}
 --- !u!1 &730448341
@@ -81924,7 +81929,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &2119282706
 Animator:
   serializedVersion: 3
