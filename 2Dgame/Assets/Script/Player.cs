@@ -36,6 +36,15 @@ public class Player : MonoBehaviour
     [Header("結束面板")]
     public GameObject EndPanel;
 
+    [Header("攻擊判定點")]
+    public Vector3 attackPoint;
+    [Header("攻擊判定範圍")]
+    public Vector3 attackRange;
+    [Header("攻擊判定時間點"), Range(0, 10f)]
+    public float attackTime;
+    [Header("攻擊CD"), Range(0, 10f)]
+    public float attackCD;
+
     private AudioSource Aud;
     private Rigidbody2D Rig;
     private Animator Ani;
@@ -75,6 +84,9 @@ public class Player : MonoBehaviour
     {
         Gizmos.color = new Color(0, 1, 0, 0.4f);
         Gizmos.DrawSphere(transform.position + postion, range);
+
+        Gizmos.color = new Color(1, 0, 0, 0.5f);
+        Gizmos.DrawCube(transform.position + attackPoint, attackRange);
     }
 
     [Header("開門音效")]
@@ -84,7 +96,7 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         //當碰到Tag(Key)的物件時執行
-        if(other.tag =="Key")
+        if (other.tag == "Key")
         {
             Destroy(other.gameObject);
             Aud.PlayOneShot(KeySound, Random.Range(1f, 1.5f));
@@ -100,29 +112,29 @@ public class Player : MonoBehaviour
     {
         Rig.velocity = new Vector2(x * MoveSpead, Rig.velocity.y);
 
-        if(Input.GetKey(KeyCode.D) ||Input.GetKey(KeyCode.RightArrow))
-            {
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {
             transform.localEulerAngles = Vector3.zero;
-            }
-        if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-            {
+        }
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        {
             transform.localEulerAngles = new Vector3(0, 180, 0);
-            }
+        }
 
         Ani.SetBool("run", x != 0);
     }
 
     private void jump()
     {
-        if(OnTheGround == true && Input.GetKeyDown(KeyCode.Space))
-            {
+        if (OnTheGround == true && Input.GetKeyDown(KeyCode.Space))
+        {
             Rig.AddForce(new Vector2(0, JumpHeight));
             Ani.SetTrigger("jumping");
-            }
+        }
 
         Collider2D hit = Physics2D.OverlapCircle(transform.position + postion, range, 1 << 8);
-        
-        if(hit)
+
+        if (hit)
         {
             OnTheGround = true;
         }
@@ -137,7 +149,12 @@ public class Player : MonoBehaviour
 
     private void fire()
     {
-        if(Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            Ani.SetTrigger("attack1");
+        }
+
+        /*if (Input.GetKeyDown(KeyCode.Z))
         {
             Aud.PlayOneShot(Sound, Random.Range(1f, 1.5f));
             GameObject temp = Instantiate(Bullet, BulletPosition.position, BulletPosition.rotation);
@@ -145,7 +162,7 @@ public class Player : MonoBehaviour
             temp.GetComponent<Rigidbody2D>().AddForce(BulletPosition.right * BulletSpeed + BulletPosition.up * 100);
 
             temp.AddComponent<Bullet>().Damage = BulletDamage;
-        }
+        }*/
     }
 
     private void Dead()
@@ -172,7 +189,7 @@ public class Player : MonoBehaviour
     public IEnumerator damageeffect()
     {
         Color red = new Color(1, 0.1f, 0.1f);
-        
+
 
         for (int i = 0; i < 4; i++)
         {

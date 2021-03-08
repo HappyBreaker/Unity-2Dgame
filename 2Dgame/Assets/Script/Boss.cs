@@ -163,8 +163,8 @@ public class Boss : MonoBehaviour
         Ani.SetTrigger("GetHit");
         TextHp.text = Health.ToString();
         ImgHp.fillAmount = Health / HealthMax;
-
-        if (Health <= HealthMax * 0.7)
+        
+        if (Health <= HealthMax * 0.7)      //第二階段攻擊模式
         {
             IsSecond = true;
             RangeAtk = 30;
