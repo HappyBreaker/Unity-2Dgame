@@ -101,16 +101,16 @@ public class Boss : MonoBehaviour
         float dis = Vector2.Distance(transform.position, player.transform.position); //距離=二維.距離(A座標,B座標)
         if (dis > RangeAtk)
         {
-            //Rig.AddForce(transform.right);
+            Rig.AddForce(transform.right);
             Rig.MovePosition(transform.position + transform.right * Time.deltaTime * MoveSpeed);
-            Ani.SetTrigger("walk");
+       
         }
         else
         {
             attack();
         }
 
-        //Ani.SetBool("Walk", Rig.velocity.magnitude > 0);
+        Ani.SetBool("Walk", Rig.velocity.magnitude > 0);
         
         
         
@@ -121,7 +121,7 @@ public class Boss : MonoBehaviour
     /// </summary>
     private void attack()
     {
-        Rig.velocity = Vector3.zero;
+        //Rig.velocity = Vector3.zero;
         if(Timer < CDAtk)
         {
             Timer += Time.deltaTime;

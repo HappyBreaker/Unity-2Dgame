@@ -44,12 +44,16 @@ public class Player : MonoBehaviour
     public float attackTime;
     [Header("攻擊CD"), Range(0, 10f)]
     public float attackCD;
+    [Header("攻擊傷害"), Range(0, 100f)]
+    public float attackDamage = 50;
 
+    private float timer;
     private AudioSource Aud;
     private Rigidbody2D Rig;
     private Animator Ani;
     private SpriteRenderer Spr;
     private float HealthMax;
+    private Boss boss;
     //private CamerControl Cam;
     #endregion
 
@@ -61,12 +65,12 @@ public class Player : MonoBehaviour
         Ani = GetComponent<Animator>();
         Spr = GetComponent<SpriteRenderer>();
 
+        boss = FindObjectOfType<Boss>();
         HealthMax = Health;
 
         TextHp.text = Health.ToString();
         ImgHp.fillAmount = Health / HealthMax;
 
-        //Cam = FindObjectOfType<CamerControl>();
     }
 
 
@@ -77,7 +81,7 @@ public class Player : MonoBehaviour
         GetHorizontal();
         move();
         jump();
-        fire();
+        Attack();
     }
 
     private void OnDrawGizmos()
@@ -86,7 +90,7 @@ public class Player : MonoBehaviour
         Gizmos.DrawSphere(transform.position + postion, range);
 
         Gizmos.color = new Color(1, 0, 0, 0.5f);
-        Gizmos.DrawCube(transform.position + attackPoint, attackRange);
+        Gizmos.DrawCube(transform.position + transform.right * attackPoint.x + transform.up * attackPoint.y, attackRange);
     }
 
     [Header("開門音效")]
@@ -147,11 +151,17 @@ public class Player : MonoBehaviour
         Ani.SetBool("on the ground", OnTheGround);
     }
 
-    private void fire()
+    private void Attack()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z) && timer >= attackCD)
         {
             Ani.SetTrigger("attack1");
+            attackCD = 0;
+            StartCoroutine(AttackDelay());
+        }
+        else
+        {
+            timer += Time.deltaTime;
         }
 
         /*if (Input.GetKeyDown(KeyCode.Z))
@@ -165,6 +175,12 @@ public class Player : MonoBehaviour
         }*/
     }
 
+    private IEnumerator AttackDelay()
+    {
+        yield return new WaitForSeconds(attackTime);
+        Collider2D hit = Physics2D.OverlapBox(transform.position + transform.right * attackPoint.x + transform.up * attackPoint.y, attackRange, 0, 1 << 10);
+        if (hit) boss.health(attackDamage);
+    }
     private void Dead()
     {
         EndPanel.SetActive(true);
