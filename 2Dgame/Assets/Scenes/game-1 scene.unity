@@ -81395,7 +81395,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1957362342}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.3, y: -57.7, z: 0}
+  m_LocalPosition: {x: 33.9, y: -59, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1374579824}
@@ -81431,7 +81431,7 @@ MonoBehaviour:
   attackPoint: {x: 1.2, y: 0.17, z: 0}
   attackRange: {x: 0.96, y: -2.29, z: 0}
   attackTime: 0
-  attackCD: 0
+  attackCD: 0.55
   attackDamage: 50
   KeySound: {fileID: 8300000, guid: bea01ab9ce2f4a842996b52ebb6eaa4f, type: 3}
 --- !u!70 &1957362347

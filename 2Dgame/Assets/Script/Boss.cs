@@ -1,25 +1,25 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events; 
+using UnityEngine.Events;
 using System.Collections;
 
 
-[RequireComponent(typeof(AudioSource),typeof(Rigidbody2D),typeof(CapsuleCollider2D))]
+[RequireComponent(typeof(AudioSource), typeof(Rigidbody2D), typeof(CapsuleCollider2D))]
 
 public class Boss : MonoBehaviour
 {
-    [Header("移動速度"),Range(0, 100)]
+    [Header("移動速度"), Range(0, 100)]
     public float MoveSpeed = 10;
-    [Header("攻擊範圍"),Range(0, 100)]
+    [Header("攻擊範圍"), Range(0, 100)]
     public float RangeAtk;
     [Header("攻擊CD"), Range(0, 10)]
     public float CDAtk = 3.5f;
-    [Header("傷害"),  Range(0, 200)]
+    [Header("傷害"), Range(0, 200)]
     public int Attack = 20;
     [Header("傷害延遲時間"), Range(0, 200)]
     public float AtkDelay = 0.7f;
 
-    [Header("血量"),  Range(0, 2000)]
+    [Header("血量"), Range(0, 2000)]
     public float Health;
     [Header("血量文字")]
     public Text TextHp;
@@ -53,7 +53,7 @@ public class Boss : MonoBehaviour
         Rig = GetComponent<Rigidbody2D>();
         Ani = GetComponent<Animator>();
         ParSystem = GameObject.Find("skeletonstagetwo").GetComponent<ParticleSystem>();
-       
+
         HealthMax = Health;
 
         player = FindObjectOfType<Player>(); //透過元件去尋找物件 注意!!不可同元件出現在兩個不同的物件
@@ -82,10 +82,10 @@ public class Boss : MonoBehaviour
 
     private void move()
     {
-        Rig.WakeUp();
+        //Rig.WakeUp();
         AnimatorStateInfo info = Ani.GetCurrentAnimatorStateInfo(0);
         if (info.IsName("Boss-Attack") || info.IsName("Boss-Hit")) return;
-        
+
         /*
         if(transform.position.x > player.transform.position.x)
         {
@@ -101,9 +101,9 @@ public class Boss : MonoBehaviour
         float dis = Vector2.Distance(transform.position, player.transform.position); //距離=二維.距離(A座標,B座標)
         if (dis > RangeAtk)
         {
-            Rig.AddForce(transform.right);
+            //Rig.AddForce(transform.right);
             Rig.MovePosition(transform.position + transform.right * Time.deltaTime * MoveSpeed);
-       
+
         }
         else
         {
@@ -111,10 +111,12 @@ public class Boss : MonoBehaviour
         }
 
         Ani.SetBool("Walk", Rig.velocity.magnitude > 0);
-        
-        
-        
-        //print(Rig.velocity.magnitude); //檢查用
+
+
+
+        print(Rig.velocity.magnitude);
+        print("x" + Rig.velocity.x);
+        print("y" + Rig.velocity.y);//檢查用
     }
     /// <summary>
     /// 攻擊冷卻與攻擊行為
@@ -122,7 +124,7 @@ public class Boss : MonoBehaviour
     private void attack()
     {
         //Rig.velocity = Vector3.zero;
-        if(Timer < CDAtk)
+        if (Timer < CDAtk)
         {
             Timer += Time.deltaTime;
         }
@@ -133,18 +135,18 @@ public class Boss : MonoBehaviour
             StartCoroutine(DelaySendDamage()); //啟動協同程序(程序名稱());
         }
     }
-    
+
     /// <summary>
     /// 延遲傳送傷害,IEnumerator 允許傳回時間
     /// </summary>
     private IEnumerator DelaySendDamage()
     {
         //等待延遲時間
-        yield return new WaitForSeconds(AtkDelay);    
+        yield return new WaitForSeconds(AtkDelay);
         //物理碰撞 =2D物理,盒形物理範圍(中心點,範圍,角度,圖層)
         Collider2D hit = Physics2D.OverlapBox(transform.position + transform.right * ofSetAtk.x + transform.up * ofSetAtk.y, SizeAtk, 0, 1 << 9);
         if (hit) player.health(Attack);
-        
+
         StartCoroutine(Cam.ShakeCamera()); // 搖晃觸發
 
         if (IsSecond)
@@ -157,13 +159,13 @@ public class Boss : MonoBehaviour
     /// 受傷
     /// </summary>
     /// <param name="Damage">接收傷害</param>
-    public void health(float Damage)
+    public void Bosshealth(float Damage)
     {
         Health -= Damage;
         Ani.SetTrigger("GetHit");
         TextHp.text = Health.ToString();
         ImgHp.fillAmount = Health / HealthMax;
-        
+
         if (Health <= HealthMax * 0.7)      //第二階段攻擊模式
         {
             IsSecond = true;

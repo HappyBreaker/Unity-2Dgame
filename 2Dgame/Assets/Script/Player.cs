@@ -65,7 +65,7 @@ public class Player : MonoBehaviour
         Ani = GetComponent<Animator>();
         Spr = GetComponent<SpriteRenderer>();
 
-        boss = FindObjectOfType<Boss>();
+        boss = GameObject.FindObjectOfType<Boss>();
         HealthMax = Health;
 
         TextHp.text = Health.ToString();
@@ -156,7 +156,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z) && timer >= attackCD)
         {
             Ani.SetTrigger("attack1");
-            attackCD = 0;
+            timer = 0;
             StartCoroutine(AttackDelay());
         }
         else
@@ -179,7 +179,7 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(attackTime);
         Collider2D hit = Physics2D.OverlapBox(transform.position + transform.right * attackPoint.x + transform.up * attackPoint.y, attackRange, 0, 1 << 10);
-        if (hit) boss.health(attackDamage);
+        if (hit) boss.Bosshealth(attackDamage);
     }
     private void Dead()
     {
