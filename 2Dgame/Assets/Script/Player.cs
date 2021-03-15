@@ -53,7 +53,8 @@ public class Player : MonoBehaviour
     private Animator Ani;
     private SpriteRenderer Spr;
     private float HealthMax;
-    private Boss boss;
+
+    public Boss boss;
     //private CamerControl Cam;
     #endregion
 
@@ -65,7 +66,6 @@ public class Player : MonoBehaviour
         Ani = GetComponent<Animator>();
         Spr = GetComponent<SpriteRenderer>();
 
-        boss = GameObject.FindObjectOfType<Boss>();
         HealthMax = Health;
 
         TextHp.text = Health.ToString();
@@ -173,6 +173,20 @@ public class Player : MonoBehaviour
 
             temp.AddComponent<Bullet>().Damage = BulletDamage;
         }*/
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (Input.GetKeyDown(KeyCode.Z) && timer >= attackCD)
+        {
+            Ani.SetTrigger("attack1");
+            timer = 0;
+            StartCoroutine(AttackDelay());
+        }
+        else
+        {
+            timer += Time.deltaTime;
+        }
     }
 
     private IEnumerator AttackDelay()

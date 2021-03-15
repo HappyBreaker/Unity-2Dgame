@@ -81433,6 +81433,7 @@ MonoBehaviour:
   attackTime: 0
   attackCD: 0.55
   attackDamage: 50
+  boss: {fileID: 2119282709}
   KeySound: {fileID: 8300000, guid: bea01ab9ce2f4a842996b52ebb6eaa4f, type: 3}
 --- !u!70 &1957362347
 CapsuleCollider2D:
