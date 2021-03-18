@@ -12,15 +12,15 @@ public class Player : MonoBehaviour
     public int JumpHeight = 100;
     [Header("是否在地上"), Tooltip("是否在地上")]
     public bool OnTheGround = true;
-    [Header("子彈-物件"), Tooltip("子彈-物件")]
-    public GameObject Bullet;
-    [Header("子彈生成點"), Tooltip("子彈生成點")]
-    public Transform BulletPosition;
-    [Header("子彈速度"), Tooltip("子彈速度"), Range(0, 5000)]
-    public float BulletSpeed = 500;
-    [Header("子彈傷害"), Tooltip("子彈傷害"), Range(0, 5000)]
-    public float BulletDamage = 50;
-    [Header("開槍音效"), Tooltip("開槍音效")]
+    // [Header("子彈-物件"), Tooltip("子彈-物件")]
+    //public GameObject Bullet;
+    //[Header("子彈生成點"), Tooltip("子彈生成點")]
+    //public Transform BulletPosition;
+    //[Header("子彈速度"), Tooltip("子彈速度"), Range(0, 5000)]
+    //public float BulletSpeed = 500;
+    //[Header("子彈傷害"), Tooltip("子彈傷害"), Range(0, 5000)]
+    //public float BulletDamage = 50;
+    [Header("攻擊音效"), Tooltip("音效")]
     public AudioClip Sound;
     [Header("地板碰撞位置")]
     public Vector3 postion;
