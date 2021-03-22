@@ -15,13 +15,13 @@ public class MenuControl : MonoBehaviour
     public void BackToMenu()
     {
         BGM.PlayOneShot(Sound, 2);
-        Invoke("DelayMenuGame", 1.5f);
+        Invoke("DelayMenuGame", 0.5f);
     }
 
     public void QuitGame()
     {
         BGM.PlayOneShot(Sound, 2);
-        Invoke("DelayQuitGame", 1.5f);
+        Invoke("DelayQuitGame", 0.5f);
     }
 
     #region [DelayGame]
