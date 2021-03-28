@@ -91653,10 +91653,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4349779924043443918, guid: f9692843e3d7e8e4382938c3e295ae8c,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: a3534a2911582c748bee48250b7f131a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 16d525f7abdadab4a9236946c47e53e2, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
-  m_Pitch: 1.25
+  m_Volume: 1
+  m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
@@ -96848,7 +96848,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 120, y: 1, z: 85}
+    m_Scale: {x: 138.6, y: 1, z: 80.6}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -100879,7 +100879,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1407298285}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -52.1, y: 4.500002, z: 0}
+  m_LocalPosition: {x: -68.8, y: 93, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -102155,7 +102155,6 @@ MonoBehaviour:
   MoveSpead: 10.5
   JumpHeight: 900
   OnTheGround: 1
-  Sound: {fileID: 8300000, guid: 04d12f408f8bbde4db1df440417f7daa, type: 3}
   postion: {x: 0, y: -1, z: 0}
   range: 0.5
   Health: 100
@@ -102167,6 +102166,7 @@ MonoBehaviour:
   attackTime: 0
   attackCD: 0.55
   attackDamage: 50
+  atkSound: {fileID: 8300000, guid: a8ed83b3104f9c54189a196710670010, type: 3}
   boss: {fileID: 2119282709}
   KeySound: {fileID: 8300000, guid: bea01ab9ce2f4a842996b52ebb6eaa4f, type: 3}
 --- !u!70 &1957362347
@@ -102459,7 +102459,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1988369362}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 25.12, y: -30.9, z: 0}
+  m_LocalPosition: {x: 27.8, y: -30.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1301488172}
@@ -102492,7 +102492,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -12.690016, y: -13.834831}
+  m_Offset: {x: -15.41625, y: -14.584545}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -102503,7 +102503,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 22.904758, y: 2.3408356}
+  m_Size: {x: 23.041073, y: 2.2045212}
   m_EdgeRadius: 0
 --- !u!1 &2071531567
 GameObject:

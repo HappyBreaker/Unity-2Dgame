@@ -13,18 +13,21 @@ ScriptsOnlyBuild:
     - skeletonstagetwo
     - trap
     Unity.2D.Tilemap.Editor.dll:
-    - UnityEditor.Tilemaps.GridBrush
-    - UnityEditor.Tilemaps.GridBrushEditor
-    - UnityEditor.Tilemaps.GridPaintPaletteClipboard
-    - UnityEditor.Tilemaps.GridPaintPaletteWindow
     - UnityEditor.Tilemaps.GridPaintingState
     - UnityEditor.Tilemaps.GridPaletteBrushes
     - UnityEditor.Tilemaps.GridPalettes
-    - UnityEditor.Tilemaps.PaintableSceneViewGrid
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.TileDragAndDropManager
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
+    UnityEditor.Graphs.dll:
+    - UnityEditor.Graphs.AnimationBlendTree.Graph
+    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
+    - UnityEditor.Graphs.AnimationStateMachine.Graph
+    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
+    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -82,45 +85,45 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 582}
     - Class: 114
-      Script: {instanceID: 11258}
+      Script: {instanceID: 11254}
     - Class: 114
-      Script: {instanceID: 11424}
+      Script: {instanceID: 11420}
     - Class: 114
-      Script: {instanceID: 11464}
+      Script: {instanceID: 11460}
     - Class: 114
-      Script: {instanceID: 11474}
+      Script: {instanceID: 11470}
     - Class: 114
-      Script: {instanceID: 11522}
+      Script: {instanceID: 11518}
     - Class: 114
-      Script: {instanceID: 11528}
+      Script: {instanceID: 11524}
     - Class: 114
-      Script: {instanceID: 11808}
+      Script: {instanceID: 11804}
     - Class: 114
-      Script: {instanceID: 11854}
+      Script: {instanceID: 11850}
     - Class: 114
-      Script: {instanceID: 11878}
+      Script: {instanceID: 11874}
     - Class: 114
-      Script: {instanceID: 12286}
+      Script: {instanceID: 12282}
     - Class: 114
-      Script: {instanceID: 12388}
+      Script: {instanceID: 12384}
     - Class: 114
-      Script: {instanceID: 12470}
+      Script: {instanceID: 12466}
     - Class: 114
-      Script: {instanceID: 12622}
+      Script: {instanceID: 12618}
     - Class: 114
-      Script: {instanceID: 12784}
+      Script: {instanceID: 12782}
     - Class: 114
-      Script: {instanceID: 12842}
+      Script: {instanceID: 12840}
     - Class: 114
-      Script: {instanceID: 12886}
+      Script: {instanceID: 12884}
+    - Class: 114
+      Script: {instanceID: 12918}
     - Class: 114
       Script: {instanceID: 12920}
     - Class: 114
-      Script: {instanceID: 12922}
+      Script: {instanceID: 13164}
     - Class: 114
-      Script: {instanceID: 13166}
-    - Class: 114
-      Script: {instanceID: 13198}
+      Script: {instanceID: 13196}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -189,23 +192,23 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 582}
     - Class: 114
-      Script: {instanceID: 11258}
+      Script: {instanceID: 11254}
     - Class: 114
-      Script: {instanceID: 11424}
+      Script: {instanceID: 11420}
     - Class: 114
-      Script: {instanceID: 11464}
+      Script: {instanceID: 11460}
     - Class: 114
-      Script: {instanceID: 11808}
+      Script: {instanceID: 11804}
     - Class: 114
-      Script: {instanceID: 11854}
+      Script: {instanceID: 11850}
     - Class: 114
-      Script: {instanceID: 11878}
+      Script: {instanceID: 11874}
     - Class: 114
-      Script: {instanceID: 12286}
+      Script: {instanceID: 12282}
     - Class: 114
-      Script: {instanceID: 12784}
+      Script: {instanceID: 12782}
     - Class: 114
-      Script: {instanceID: 13166}
+      Script: {instanceID: 13164}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -575,7 +578,7 @@ ScriptsOnlyBuild:
     className: TimelineAsset
   - hash:
       serializedVersion: 2
-      Hash: 812787ff074d8500199a02218278585c
+      Hash: 94c31c5db0c62c1eb4f22e1521dcff90
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Player
@@ -739,4 +742,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/title menu.unity
   - Assets/Scenes/game-1 scene.unity
-  playerPath: "D:/Unity DATA/Unity-2Dgame/2Dgame/Demo/\u81EA\u7531\u4EBADemo.exe"
+  playerPath: "D:/Unity Data/Unity-2Dgame/2Dgame/Demo/\u81EA\u7531\u4EBADemo.exe"

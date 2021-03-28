@@ -20,8 +20,6 @@ public class Player : MonoBehaviour
     //public float BulletSpeed = 500;
     //[Header("子彈傷害"), Tooltip("子彈傷害"), Range(0, 5000)]
     //public float BulletDamage = 50;
-    [Header("攻擊音效"), Tooltip("音效")]
-    public AudioClip Sound;
     [Header("地板碰撞位置")]
     public Vector3 postion;
     [Header("地板碰撞半徑")]
@@ -46,6 +44,8 @@ public class Player : MonoBehaviour
     public float attackCD;
     [Header("攻擊傷害"), Range(0, 100f)]
     public float attackDamage = 50;
+    [Header("攻擊音效"), Tooltip("音效")]
+    public AudioClip atkSound;
 
     private float timer;
     private AudioSource Aud;
@@ -156,6 +156,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z) && timer >= attackCD)
         {
             Ani.SetTrigger("attack1");
+            Aud.PlayOneShot(atkSound);
             timer = 0;
             StartCoroutine(AttackDelay());
         }
@@ -175,26 +176,23 @@ public class Player : MonoBehaviour
         }*/
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (Input.GetKeyDown(KeyCode.Z) && timer >= attackCD)
-        {
-            Ani.SetTrigger("attack1");
-            timer = 0;
-            StartCoroutine(AttackDelay());
-        }
-        else
-        {
-            timer += Time.deltaTime;
-        }
-    }
-
     private IEnumerator AttackDelay()
     {
         yield return new WaitForSeconds(attackTime);
         Collider2D hit = Physics2D.OverlapBox(transform.position + transform.right * attackPoint.x + transform.up * attackPoint.y, attackRange, 0, 1 << 10);
         if (hit) boss.Bosshealth(attackDamage);
     }
+
+    public void health(float Damage)
+    {
+        Health -= Damage;
+        TextHp.text = Health.ToString();
+        ImgHp.fillAmount = Health / HealthMax;
+        StartCoroutine(damageeffect());
+
+        if (Health <= 0) Dead();
+    }
+
     private void Dead()
     {
         EndPanel.SetActive(true);
@@ -205,21 +203,9 @@ public class Player : MonoBehaviour
         Rig.Sleep();
     }
 
-    public void health(float Damage)
-    {
-        Health -= Damage;
-        TextHp.text = Health.ToString();
-        ImgHp.fillAmount = Health / HealthMax;
-        StartCoroutine(damageeffect());
-
-
-        if (Health <= 0) Dead();
-    }
-
     public IEnumerator damageeffect()
     {
         Color red = new Color(1, 0.1f, 0.1f);
-
 
         for (int i = 0; i < 4; i++)
         {
