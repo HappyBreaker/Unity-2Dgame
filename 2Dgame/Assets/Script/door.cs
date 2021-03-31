@@ -18,9 +18,9 @@ public class door : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.name == "Warrior" && Key == null)
+        if(collision.name == "Warrior")
         {
-            Ani.SetTrigger("key");
+            Ani.SetTrigger("open");
             Aud.PlayOneShot(DoorSound, Random.Range(1f, 1.5f));
         }
     }
