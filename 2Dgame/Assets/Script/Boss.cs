@@ -25,6 +25,9 @@ public class Boss : MonoBehaviour
     public Text TextHp;
     [Header("血量圖片")]
     public Image ImgHp;
+    [Header("通關面板")]
+    public GameObject cleanPanel;
+
 
     [Header("死亡事件")]
     public UnityEvent OnDead;
@@ -180,6 +183,8 @@ public class Boss : MonoBehaviour
     private void Dead()
     {
         OnDead.Invoke();
+
+        cleanPanel.SetActive(true);
 
         Health = 0;
         TextHp.text = 0.ToString();

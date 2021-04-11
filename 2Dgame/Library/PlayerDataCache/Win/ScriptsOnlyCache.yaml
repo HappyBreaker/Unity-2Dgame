@@ -7,15 +7,21 @@ ScriptsOnlyBuild:
     - CamerControl
     - GameManager
     - MenuControl
+    - Note
     - Player
     - TeleportManager
     - door
     - skeletonstagetwo
     - trap
     Unity.2D.Tilemap.Editor.dll:
+    - UnityEditor.Tilemaps.GridBrush
+    - UnityEditor.Tilemaps.GridBrushEditor
+    - UnityEditor.Tilemaps.GridPaintPaletteClipboard
+    - UnityEditor.Tilemaps.GridPaintPaletteWindow
     - UnityEditor.Tilemaps.GridPaintingState
     - UnityEditor.Tilemaps.GridPaletteBrushes
     - UnityEditor.Tilemaps.GridPalettes
+    - UnityEditor.Tilemaps.PaintableSceneViewGrid
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.TileDragAndDropManager
     Unity.Rider.Editor.dll:
@@ -58,8 +64,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 50
       Script: {instanceID: 0}
-    - Class: 58
-      Script: {instanceID: 0}
     - Class: 61
       Script: {instanceID: 0}
     - Class: 62
@@ -83,47 +87,49 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 582}
+      Script: {instanceID: 584}
     - Class: 114
-      Script: {instanceID: 11254}
+      Script: {instanceID: 11256}
     - Class: 114
-      Script: {instanceID: 11420}
+      Script: {instanceID: 11484}
     - Class: 114
-      Script: {instanceID: 11460}
+      Script: {instanceID: 11530}
     - Class: 114
-      Script: {instanceID: 11470}
+      Script: {instanceID: 11546}
     - Class: 114
-      Script: {instanceID: 11518}
+      Script: {instanceID: 11610}
     - Class: 114
-      Script: {instanceID: 11524}
+      Script: {instanceID: 11616}
     - Class: 114
-      Script: {instanceID: 11804}
+      Script: {instanceID: 11972}
     - Class: 114
-      Script: {instanceID: 11850}
+      Script: {instanceID: 12036}
     - Class: 114
-      Script: {instanceID: 11874}
-    - Class: 114
-      Script: {instanceID: 12282}
-    - Class: 114
-      Script: {instanceID: 12384}
-    - Class: 114
-      Script: {instanceID: 12466}
+      Script: {instanceID: 12070}
     - Class: 114
       Script: {instanceID: 12618}
     - Class: 114
-      Script: {instanceID: 12782}
+      Script: {instanceID: 12740}
     - Class: 114
-      Script: {instanceID: 12840}
+      Script: {instanceID: 12838}
     - Class: 114
-      Script: {instanceID: 12884}
+      Script: {instanceID: 13034}
     - Class: 114
-      Script: {instanceID: 12918}
+      Script: {instanceID: 13246}
     - Class: 114
-      Script: {instanceID: 12920}
+      Script: {instanceID: 13320}
     - Class: 114
-      Script: {instanceID: 13164}
+      Script: {instanceID: 13368}
     - Class: 114
-      Script: {instanceID: 13196}
+      Script: {instanceID: 13414}
+    - Class: 114
+      Script: {instanceID: 13416}
+    - Class: 114
+      Script: {instanceID: 13736}
+    - Class: 114
+      Script: {instanceID: 13770}
+    - Class: 114
+      Script: {instanceID: 22812}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -190,25 +196,25 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 582}
+      Script: {instanceID: 584}
     - Class: 114
-      Script: {instanceID: 11254}
+      Script: {instanceID: 11256}
     - Class: 114
-      Script: {instanceID: 11420}
+      Script: {instanceID: 11484}
     - Class: 114
-      Script: {instanceID: 11460}
+      Script: {instanceID: 11530}
     - Class: 114
-      Script: {instanceID: 11804}
+      Script: {instanceID: 11972}
     - Class: 114
-      Script: {instanceID: 11850}
+      Script: {instanceID: 12036}
     - Class: 114
-      Script: {instanceID: 11874}
+      Script: {instanceID: 12070}
     - Class: 114
-      Script: {instanceID: 12282}
+      Script: {instanceID: 12618}
     - Class: 114
-      Script: {instanceID: 12782}
+      Script: {instanceID: 13246}
     - Class: 114
-      Script: {instanceID: 13164}
+      Script: {instanceID: 13736}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -216,8 +222,6 @@ ScriptsOnlyBuild:
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
-      Script: {instanceID: 0}
-    - Class: 212
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -332,6 +336,12 @@ ScriptsOnlyBuild:
     className: TestResultRendererCallback
   - hash:
       serializedVersion: 2
+      Hash: 1d845b2535654b2525956159b2714d86
+    assemblyName: Unity.2D.SpriteShape.Runtime.dll
+    namespaceName: UnityEngine.U2D
+    className: SpriteShapeController
+  - hash:
+      serializedVersion: 2
       Hash: 234d407605354852c48e57df17c9a1c6
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -354,6 +364,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CamerControl
+  - hash:
+      serializedVersion: 2
+      Hash: 523ce309f50d9eee6a8fc0e2f86c9c97
+    assemblyName: Unity.2D.SpriteShape.Runtime.dll
+    namespaceName: 
+    className: SpriteShapeGeometryCache
   - hash:
       serializedVersion: 2
       Hash: 8aa3d6ccbcb54ee8db6c1229854adaaa
@@ -440,6 +456,12 @@ ScriptsOnlyBuild:
     className: ControlPlayableAsset
   - hash:
       serializedVersion: 2
+      Hash: 0edeba255bdbade25edc357f1412ba38
+    assemblyName: Unity.2D.SpriteShape.Runtime.dll
+    namespaceName: UnityEngine.U2D
+    className: SpriteShape
+  - hash:
+      serializedVersion: 2
       Hash: 5cc439bf63c0539d39588e69465ac2ab
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -524,7 +546,7 @@ ScriptsOnlyBuild:
     className: TeleportManager
   - hash:
       serializedVersion: 2
-      Hash: b390936185bbac36821b7a9ee100db7f
+      Hash: 05398c86eae8089af4d2069e42f8db2e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Boss
@@ -578,7 +600,7 @@ ScriptsOnlyBuild:
     className: TimelineAsset
   - hash:
       serializedVersion: 2
-      Hash: 94c31c5db0c62c1eb4f22e1521dcff90
+      Hash: e8fad2c438f18c182a42dd148a65718a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Player
@@ -738,8 +760,14 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 6ada7de54af7e56475265026a9ffed5f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Note
   platform: 5
   scenePathNames:
   - Assets/Scenes/title menu.unity
   - Assets/Scenes/game-1 scene.unity
-  playerPath: "D:/Unity Data/Unity-2Dgame/2Dgame/Demo/\u81EA\u7531\u4EBADemo.exe"
+  playerPath: "D:/Unity Data/Unity-2Dgame/2Dgame/Finish/\u81EA\u7531\u4EBADemo.exe"

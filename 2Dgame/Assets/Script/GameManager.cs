@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     }
     public void GamePause()
     {
-        Time.timeScale = 0;
+        Time.timeScale = 1;
         player.enabled = false;
     }
     public void GameRestar()

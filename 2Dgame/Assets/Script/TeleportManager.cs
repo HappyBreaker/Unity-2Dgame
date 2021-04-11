@@ -15,7 +15,7 @@ public class TeleportManager : MonoBehaviour
 
     private void Teleport()
     {
-        if (PlayerIN && Input.GetKeyDown(KeyCode.UpArrow))
+        if (PlayerIN && Input.GetKeyDown(KeyCode.DownArrow))
         {
             Player.position = otherTeleport.position + Vector3.up * 1.5f;
         }

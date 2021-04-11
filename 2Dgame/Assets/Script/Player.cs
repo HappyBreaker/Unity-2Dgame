@@ -46,6 +46,8 @@ public class Player : MonoBehaviour
     public float attackDamage = 50;
     [Header("攻擊音效"), Tooltip("音效")]
     public AudioClip atkSound;
+    [Header("膽怯移動"), Range(0f, 1000f)]
+    public float backSpead = 20.5f;
 
     private float timer;
     private AudioSource Aud;
@@ -82,6 +84,7 @@ public class Player : MonoBehaviour
         move();
         jump();
         Attack();
+
     }
 
     private void OnDrawGizmos()
@@ -93,20 +96,6 @@ public class Player : MonoBehaviour
         Gizmos.DrawCube(transform.position + transform.right * attackPoint.x + transform.up * attackPoint.y, attackRange);
     }
 
-    [Header("開門音效")]
-    public AudioClip KeySound;
-
-    //處發事件：Enter
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        //當碰到Tag(Key)的物件時執行
-        if (other.tag == "Key")
-        {
-            Destroy(other.gameObject);
-            Aud.PlayOneShot(KeySound, Random.Range(1f, 1.5f));
-        }
-    }
-
     private void GetHorizontal()
     {
         x = Input.GetAxis("Horizontal");
@@ -116,11 +105,11 @@ public class Player : MonoBehaviour
     {
         Rig.velocity = new Vector2(x * MoveSpead, Rig.velocity.y);
 
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.D) == false)
         {
             transform.localEulerAngles = Vector3.zero;
         }
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.A) == false)
         {
             transform.localEulerAngles = new Vector3(0, 180, 0);
         }
@@ -130,7 +119,7 @@ public class Player : MonoBehaviour
 
     private void jump()
     {
-        if (OnTheGround == true && Input.GetKeyDown(KeyCode.Space))
+        if (OnTheGround == true && Input.GetKeyDown(KeyCode.UpArrow))
         {
             Rig.AddForce(new Vector2(0, JumpHeight));
             Ani.SetTrigger("jumping");
@@ -153,7 +142,7 @@ public class Player : MonoBehaviour
 
     private void Attack()
     {
-        if (Input.GetKeyDown(KeyCode.Z) && timer >= attackCD)
+        if (Input.GetKeyDown(KeyCode.Space) && timer >= attackCD)
         {
             Ani.SetTrigger("attack1");
             Aud.PlayOneShot(atkSound);
@@ -188,6 +177,7 @@ public class Player : MonoBehaviour
         Health -= Damage;
         TextHp.text = Health.ToString();
         ImgHp.fillAmount = Health / HealthMax;
+        Rig.AddForce(new Vector2(backSpead, backSpead));
         StartCoroutine(damageeffect());
 
         if (Health <= 0) Dead();
@@ -198,15 +188,14 @@ public class Player : MonoBehaviour
         EndPanel.SetActive(true);
         Health = 0;
         TextHp.text = 0.ToString();
-        Ani.SetBool("die", true);
-        enabled = false;
+        Ani.SetTrigger("die");
+        Destroy(this, 0.5f);
         Rig.Sleep();
     }
 
     public IEnumerator damageeffect()
     {
         Color red = new Color(1, 0.1f, 0.1f);
-
         for (int i = 0; i < 4; i++)
         {
             Spr.color = red;

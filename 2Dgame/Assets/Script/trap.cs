@@ -22,6 +22,7 @@ public class trap : MonoBehaviour
     {
         player.health(damege);
         warrior.position = trap1.position;
+        
     }
 
 }
