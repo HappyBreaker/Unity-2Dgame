@@ -63,15 +63,14 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        Aud = GetComponent<AudioSource>();
-        Rig = GetComponent<Rigidbody2D>();
-        Ani = GetComponent<Animator>();
-        Spr = GetComponent<SpriteRenderer>();
+        Aud = GetComponent<AudioSource>();      //取得<音效>元件
+        Rig = GetComponent<Rigidbody2D>();      //取得<剛體2D>元件
+        Ani = GetComponent<Animator>();         //取得<動畫>元件
+        Spr = GetComponent<SpriteRenderer>();   //取得<繪圖>元件
 
-        HealthMax = Health;
-
+        HealthMax = Health;                     //初始化設定血量
         TextHp.text = Health.ToString();
-        ImgHp.fillAmount = Health / HealthMax;
+        ImgHp.fillAmount = Health / HealthMax;  //連接同步血條
 
     }
 
@@ -80,10 +79,10 @@ public class Player : MonoBehaviour
 
     public void Update()
     {
-        GetHorizontal();
-        move();
-        jump();
-        Attack();
+        GetHorizontal();    //待命子程序"GetHorizontal"
+        move();             //待命子程序"move"
+        jump();             //待命子程序"jume"
+        Attack();           //待命子程序"Attack"
 
     }
 
@@ -98,14 +97,14 @@ public class Player : MonoBehaviour
 
     private void GetHorizontal()
     {
-        x = Input.GetAxis("Horizontal");
+        x = Input.GetAxis("Horizontal"); //將水平輸入至變數"x"
     }
 
     private void move()
     {
-        Rig.velocity = new Vector2(x * MoveSpead, Rig.velocity.y);
+        Rig.velocity = new Vector2(x * MoveSpead, Rig.velocity.y); // 移動量(X * 設定速度,固定高度)
 
-        if (Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.D) == false)
+        if (Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.D) == false) //根據方向鍵改變面相的角度
         {
             transform.localEulerAngles = Vector3.zero;
         }
@@ -114,7 +113,7 @@ public class Player : MonoBehaviour
             transform.localEulerAngles = new Vector3(0, 180, 0);
         }
 
-        Ani.SetBool("run", x != 0);
+        Ani.SetBool("run", x != 0); //當開始移動時撥放"移動"動畫
     }
 
     private void jump()
@@ -174,13 +173,12 @@ public class Player : MonoBehaviour
 
     public void health(float Damage)
     {
-        Health -= Damage;
-        TextHp.text = Health.ToString();
-        ImgHp.fillAmount = Health / HealthMax;
-        Rig.AddForce(new Vector2(backSpead, backSpead));
-        StartCoroutine(damageeffect());
+        Health -= Damage;                                   //受到傷害回傳至變數"Health"
+        TextHp.text = Health.ToString();                    //介面UI數值連接變數"Health"
+        ImgHp.fillAmount = Health / HealthMax;              //條型血條顯示同步
+        StartCoroutine(damageeffect());                     //協程"受傷效果"
 
-        if (Health <= 0) Dead();
+        if (Health <= 0) Dead();                            //死亡判定
     }
 
     private void Dead()

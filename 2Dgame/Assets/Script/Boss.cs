@@ -52,17 +52,16 @@ public class Boss : MonoBehaviour
 
     private void Start()
     {
-        Aud = GetComponent<AudioSource>();
-        Rig = GetComponent<Rigidbody2D>();
-        Ani = GetComponent<Animator>();
-        ParSystem = GameObject.Find("skeletonstagetwo").GetComponent<ParticleSystem>();
+        Aud = GetComponent<AudioSource>();      //取得<音效>元件
+        Rig = GetComponent<Rigidbody2D>();      //取得<剛體2D>元件
+        Ani = GetComponent<Animator>();         //取得<動畫>元件
+        ParSystem = GameObject.Find("skeletonstagetwo").GetComponent<ParticleSystem>();  //粒子系統設定
 
-        HealthMax = Health;
-
-        player = FindObjectOfType<Player>(); //透過元件去尋找物件 注意!!不可同元件出現在兩個不同的物件
-
-        TextHp.text = Health.ToString();
-        ImgHp.fillAmount = Health / HealthMax;
+        player = FindObjectOfType<Player>();    //透過元件去尋找物件 注意!!不可同元件出現在兩個不同的物件
+        
+        HealthMax = Health;                     //初始化設定血量
+        TextHp.text = Health.ToString();        
+        ImgHp.fillAmount = Health / HealthMax;  //連接同步血條
 
         Cam = FindObjectOfType<CamerControl>();
         Rig.AddForce(transform.right);
@@ -164,18 +163,18 @@ public class Boss : MonoBehaviour
     /// <param name="Damage">接收傷害</param>
     public void Bosshealth(float Damage)
     {
-        Health -= Damage;
-        Ani.SetTrigger("GetHit");
-        TextHp.text = Health.ToString();
-        ImgHp.fillAmount = Health / HealthMax;
+        Health -= Damage;                       //受到傷害回傳至變數"Health" 
+        Ani.SetTrigger("GetHit");               //播放動畫"受傷"
+        TextHp.text = Health.ToString();        //介面UI數值連接變數"Health"
+        ImgHp.fillAmount = Health / HealthMax;  //條型血條顯示同步
 
-        if (Health <= HealthMax * 0.7)      //第二階段攻擊模式
+        if (Health <= HealthMax * 0.7)          //第二階段攻擊模式
         {
             IsSecond = true;
             RangeAtk = 30;
         }
 
-        if (Health <= 0) Dead();
+        if (Health <= 0) Dead();                //死亡判定
     }
     /// <summary>
     /// 死亡判定與動畫
