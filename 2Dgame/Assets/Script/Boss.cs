@@ -10,6 +10,7 @@ public class Boss : MonoBehaviour
 {
     [Header("移動速度"), Range(0, 100)]
     public float MoveSpeed = 10;
+
     [Header("攻擊範圍"), Range(0, 100)]
     public float RangeAtk;
     [Header("攻擊CD"), Range(0, 10)]
@@ -18,6 +19,10 @@ public class Boss : MonoBehaviour
     public int Attack = 20;
     [Header("傷害延遲時間"), Range(0, 200)]
     public float AtkDelay = 0.7f;
+    [Header("攻擊範圍位移")]
+    public Vector3 ofSetAtk;
+    [Header("攻擊判定範圍")]
+    public Vector3 SizeAtk;
 
     [Header("血量"), Range(0, 2000)]
     public float Health;
@@ -25,20 +30,14 @@ public class Boss : MonoBehaviour
     public Text TextHp;
     [Header("血量圖片")]
     public Image ImgHp;
+
     [Header("通關面板")]
     public GameObject cleanPanel;
-
-
     [Header("死亡事件")]
     public UnityEvent OnDead;
 
     [Header("音效")]
     public AudioClip Sound;
-
-    [Header("攻擊範圍位移")]
-    public Vector3 ofSetAtk;
-    [Header("攻擊判定範圍")]
-    public Vector3 SizeAtk;
 
     private AudioSource Aud;
     private Rigidbody2D Rig;

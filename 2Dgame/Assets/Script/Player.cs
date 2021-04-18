@@ -7,9 +7,9 @@ public class Player : MonoBehaviour
 {
     #region [練習欄位]
     [Header("移動數值"), Range(0f, 1000f)]
-    public float MoveSpead = 10.5f;
+    public float moveSpeed = 10.5f;
     [Header("跳越高度"), Range(0, 1000)]
-    public int JumpHeight = 100;
+    public int jumpHeight = 100;
     [Header("是否在地上"), Tooltip("是否在地上")]
     public bool OnTheGround = true;
     // [Header("子彈-物件"), Tooltip("子彈-物件")]
@@ -46,6 +46,7 @@ public class Player : MonoBehaviour
     public float attackDamage = 50;
     [Header("攻擊音效"), Tooltip("音效")]
     public AudioClip atkSound;
+    
     [Header("膽怯移動"), Range(0f, 1000f)]
     public float backSpead = 20.5f;
 
@@ -60,7 +61,6 @@ public class Player : MonoBehaviour
     //private CamerControl Cam;
     #endregion
 
-
     private void Start()
     {
         Aud = GetComponent<AudioSource>();      //取得<音效>元件
@@ -73,9 +73,6 @@ public class Player : MonoBehaviour
         ImgHp.fillAmount = Health / HealthMax;  //連接同步血條
 
     }
-
-
-    private float x;
 
     public void Update()
     {
@@ -95,6 +92,7 @@ public class Player : MonoBehaviour
         Gizmos.DrawCube(transform.position + transform.right * attackPoint.x + transform.up * attackPoint.y, attackRange);
     }
 
+    private float x;
     private void GetHorizontal()
     {
         x = Input.GetAxis("Horizontal"); //將水平輸入至變數"x"
@@ -102,7 +100,7 @@ public class Player : MonoBehaviour
 
     private void move()
     {
-        Rig.velocity = new Vector2(x * MoveSpead, Rig.velocity.y); // 移動量(X * 設定速度,固定高度)
+        Rig.velocity = new Vector2(x * moveSpeed, Rig.velocity.y); // 移動量(X * 設定速度,固定高度)
 
         if (Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.D) == false) //根據方向鍵改變面相的角度
         {
@@ -120,7 +118,7 @@ public class Player : MonoBehaviour
     {
         if (OnTheGround == true && Input.GetKeyDown(KeyCode.UpArrow))
         {
-            Rig.AddForce(new Vector2(0, JumpHeight));
+            Rig.AddForce(new Vector2(0, jumpHeight));
             Ani.SetTrigger("jumping");
         }
 
