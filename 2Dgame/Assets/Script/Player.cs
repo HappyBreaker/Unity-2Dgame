@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
     public float attackDamage = 50;
     [Header("攻擊音效"), Tooltip("音效")]
     public AudioClip atkSound;
-    
+
     [Header("膽怯移動"), Range(0f, 1000f)]
     public float backSpead = 20.5f;
 
@@ -102,13 +102,19 @@ public class Player : MonoBehaviour
     {
         Rig.velocity = new Vector2(x * moveSpeed, Rig.velocity.y); // 移動量(X * 設定速度,固定高度)
 
-        if (Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.D) == false) //根據方向鍵改變面相的角度
+        if (Input.GetKey(KeyCode.RightArrow) || x > 0) //根據方向鍵改變面相的角度
         {
             transform.localEulerAngles = Vector3.zero;
         }
-        if (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.A) == false)
+        else if (Input.GetKey(KeyCode.LeftArrow) || x < 0)
         {
             transform.localEulerAngles = new Vector3(0, 180, 0);
+        }
+
+        if (x != 0 && Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.LeftArrow))
+        {
+            Rig.velocity = new Vector2(0, Rig.velocity.y);
+            x = 0;
         }
 
         Ani.SetBool("run", x != 0); //當開始移動時撥放"移動"動畫
@@ -184,9 +190,10 @@ public class Player : MonoBehaviour
         EndPanel.SetActive(true);
         Health = 0;
         TextHp.text = 0.ToString();
-        Ani.SetTrigger("die");
-        Destroy(this, 0.5f);
+        Ani.SetBool("die", true);
         Rig.Sleep();
+        Ani.SetFloat("jump", 0);
+        this.enabled = false;
     }
 
     public IEnumerator damageeffect()
@@ -200,5 +207,9 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
     }
-
+    public IEnumerator DelayControl()
+    {
+        print("8888");
+        yield return new WaitForSeconds(5);
+    }
 }
